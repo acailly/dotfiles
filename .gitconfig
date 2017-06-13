@@ -1,0 +1,43 @@
+[user]
+	name = acailly
+	email = antoine.cailly@ext.biomerieux.com
+[core]
+	autocrlf = true
+	preloadindex = true
+	fscache = true
+	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+[gc]
+	auto = 256
+[alias]
+	glog = log --oneline --decorate --graph
+	gloga = log --oneline --decorate --graph --all
+	s = status -s
+	st = status
+	a = add .
+	ai = add -i
+	ap = add -p
+	ci = commit
+	amend = commit --amend --no-edit
+	co = checkout  
+  # From https://csswizardry.com/2017/05/little-things-i-like-to-do-with-git/
+  weekstats = shortlog -sn --since="1 weeks"
+  upstream = "!git log --oneline --no-merges HEAD..origin/$1"
+	local = "!git log --oneline --no-merges origin/$1..HEAD"
+  diffx = diff -w --word-diff --color-words
+  recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+  today = log --since=00:00:00 --all --no-merges --pretty="format:%Cgreen%an %Cred%h %Creset%s"
+  yesterday = log --since="1 days" --until=00:00:00 --all --no-merges --pretty="format:%Cgreen%an %Cred%h %Creset%s"
+  # From https://github.com/csswizardry/csswizardry.github.com/issues/66
+  cleanb = "!git remote prune origin && git branch --merged | grep -v master | grep -v \\* | xargs -n 1 git branch -d"
+[rebase]
+	autoStash = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff]
+	mnemonicprefix = true
+	renames = copies
+[rerere]
+	enabled = true

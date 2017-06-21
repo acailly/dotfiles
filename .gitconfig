@@ -19,6 +19,7 @@
 	ci = commit
 	amend = commit --amend --no-edit
 	co = checkout  
+	fetchx = fetch --all --prune
 	update = "!git branch -f $1 origin/$1 #"
 	# From https://csswizardry.com/2017/05/little-things-i-like-to-do-with-git/
 	weekstats = shortlog -sn --since="1 weeks"

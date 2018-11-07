@@ -31,6 +31,9 @@
 	yesterday = log --since="1 days" --until=00:00:00 --all --no-merges --pretty="format:%Cgreen%an %Cred%h %Creset%s"
 	# From https://github.com/csswizardry/csswizardry.github.com/issues/66
 	cleanb = "!git remote prune origin && git branch --merged | grep -v master | grep -v \\* | xargs -n 1 git branch -d #"
+	# From https://gist.github.com/bkeepers/4986257
+	fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
+	rewrite = rebase -i master
 [rebase]
 	autoStash = true
 [filter "lfs"]
